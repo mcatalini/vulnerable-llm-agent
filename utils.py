@@ -46,6 +46,8 @@ def display_instructions():
 
 # Function to convert image to base64
 def get_image_base64(path):
+    if "../" in path or "..\\" in path:
+        raise Exception("Invalid file path")
     with open(path, "rb") as image_file:
         encoded_string = base64.b64encode(image_file.read()).decode()
     return encoded_string
